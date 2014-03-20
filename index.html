@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+                <meta name="generator" content="Umbrella Reminder" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Umbrella Reminder - Do you need to take your umbrella today?</title>
+         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.js"></script>
+    	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+    	<script src="Scripts/WeatherCtrl.js" charset="utf-8"></script>
+    	<script src="Scripts/angular-local-storage.min.js"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+      
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+		<link href="app.css" type="text/css" rel="stylesheet">
+
+
+    </head>
+    
+        
+    <body  >
+        
+        <div class="container-full" >
+
+      <div class="row">
+       
+        <div class="col-lg-12 text-center v-center" ng-controller="WeatherCtrl" ng-init="init()">
+          
+          <h1>Umbrella Reminder</h1>
+          <p class="lead">Do you need an umbrella today?</p>
+          
+          <br><br><br>
+          
+          <form class="col-lg-12">
+            <div style="width:400px;text-align:center;margin:0 auto;">
+            <input class="form-control input-lg search-query" ng-model="searchTxt"   
+            title="I hate to click a button as well!!" ng-click="searchTxt=null;submitClick=false"
+            placeholder="Enter your city,town,zipcode or anything" type="text" typeahead="result as result.address for result in getLocation($viewValue) | filter:$viewValue" typeahead-loading="loadingLocations" typeahead-on-select="getWeather()">
+            </div>
+          </form>
+          
+            <div ng-show="submitClick">
+    	    <p>
+    		Temperature - Max:{{maxTemp}}{{actualSymbol}}  Min:{{minTemp}}{{actualSymbol}} &nbsp Weather Forecast:{{weather}} <img src={{imgUrl}}>
+    		<br>
+    		<small>[click here for <a href ng-click="convertTemp()">{{wantedSymbol}}</a>]</small>
+    		<div class="text-medium">
+    		{{result}}</div>
+    		
+    	    </p>
+   			 </div>
+        </div>
+        
+      </div> <!-- /row -->
+  
+  	  <div class="row">
+       
+        <div class="col-lg-12 text-center v-center" style="font-size:39pt;">
+          <!-- a href="#"><i class="icon-google-plus"></i></a> <a href="#"><i class="icon-facebook"></i></a>  <a href="#"><i class="icon-twitter"></i></a> <a href="#"><i class="icon-github"></i></a> <a href="#"><i class="icon-pinterest"></i></a-->
+        </div>
+      
+      </div>
+  
+  	<br><br><br><br><br>
+  <div class="footer navbar-fixed-bottom text-right">
+  	 
+	This site was designed using <a href="http://openweathermap.org/API">OpenWeatherMap API</a>,<a href="https://developers.google.com/maps/">Google Maps API</a>, <a href="http://angularjs.org/">Angular JS</a> and <a href="http://getbootstrap.com/">Bootstrap</a>.
+
+	</div>
+</div> <!-- /container full -->
+   
+    </body>
+</html>
