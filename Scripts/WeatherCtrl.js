@@ -55,7 +55,7 @@ function WeatherCtrl($scope, $http,localStorageService) {
 	$http({
 		  method: 'GET', 
 		  url: 'http://api.openweathermap.org/data/2.5/forecast/daily', 
-		  params:{lat:geometry.lat,lon:geometry.lng,cnt:'1',units:units}
+		  params:{lat:geometry.lat,lon:geometry.lng,cnt:'1',units:units,appid:b646314260002de9dfe1e8d59cc5010b}
 		}).
 	    success(function(data, status) {
 	    	
